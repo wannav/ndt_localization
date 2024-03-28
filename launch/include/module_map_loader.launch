@@ -1,0 +1,43 @@
+<launch>
+    
+    <arg name="project" default="ndt_localization"/>
+
+    <!--- Sim Time -->
+    <!-- <param name="/use_sim_time" default="false" /> -->
+    <arg name="roll" default="0.0" />
+    <arg name="pitch" default="0.0" />
+    <arg name="yaw" default="0.0" />
+    <arg name="x" default="0.0" />
+    <arg name="y" default="0.0" />
+    <arg name="z" default="0.0" />
+
+
+    <!-- <arg name="roll" default="1.570795" />
+    <arg name="pitch" default="0.0" />
+    <arg name="yaw" default="1.570795" />
+    <arg name="x" default="0.0" />
+    <arg name="y" default="0.0" />
+    <arg name="z" default="0.0" /> -->
+
+    <!-- 加载地图 -->
+    <arg name="map_topic" default="points_map"/>
+
+    <arg name="mapFilePath" default="$(find ndt_localization)/map/rawCloud2.pcd"/>
+
+
+    <node pkg="$(arg project)" type="$(arg project)_mapLoader"    name="$(arg project)_mapLoader"    output="screen">
+    
+        <param name="map_topic" value="$(arg map_topic)"/>
+
+        <param name="mapFilePath" value="$(arg mapFilePath)"/>
+
+
+        <param name="roll" value="$(arg roll)" />
+        <param name="pitch" value="$(arg pitch)" />
+        <param name="yaw" value="$(arg yaw)" />
+        <param name="x" value="$(arg x)" />
+        <param name="y" value="$(arg y)" />
+        <param name="z" value="$(arg z)" />
+    </node>
+
+</launch>

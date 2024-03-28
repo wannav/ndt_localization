@@ -1,0 +1,44 @@
+ndt_localization:
+  # Topics
+  pointCloudTopic: "/lslidar_point_cloud"               # Point cloud data
+  gpsTopic: "/GPS_odometry"                   # GPS odometry topic from navsat, see module_navsat.launch file
+  mapTopic: "/points_map"
+
+  # Frames
+  # lidarFrame: "laser_link"
+  lidarFrame: "base_link"
+  baseFrame: "base_link"
+  odometryFrame: "odom"
+  mapFrame: "map"
+  gpsFrame: "GPS"
+
+  # GPS Settings
+  useImuHeadingInitialization: true           # if using GPS data, set to "true"
+  useGpsElevation: false                      # if GPS elevation is bad, set to "false"
+  gpsCovThreshold: 0.01                        # m^2, threshold for using GPS data
+  poseCovThreshold: 25.0                      # m^2, threshold for using GPS data
+  
+
+  # Extrinsics (lidar -> IMU)
+  extrinsicTrans: [0.0 , 0.0 , 0.0]
+  extrinsicRot: [0, 1, 0,
+                 1, 0, 0,
+                 0, 0, -1]
+  extrinsicRPY: [0, -1, 0,
+                 1, 0, 0,
+                 0, 0, -1]
+
+  # ndt
+  trans_epsilon: 0.05
+  step_size: 0.05
+  resolution: 1.5
+  max_iterations: 30.0
+  converged_param_transform_probability : 3.0
+  vg_scan_size : 1.0
+  radius: 50
+
+  # gps
+  gpsCovThreshold: 0.01
+
+  start_delay_time: 10
+

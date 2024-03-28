@@ -1,0 +1,21 @@
+<launch>
+  <arg name="project" default="ndt_localization"/>
+
+  <arg name="outputPath" default="$(find ndt_localization)/output/"/>
+
+
+  <!-- Distance threshold -->
+  <arg name="distance_threshold" default="3.0" doc="The maximum distance threshold for center of gravity matching"/>
+
+  <arg name="converged_param_transform_probability" default="3.0" doc=" " />
+
+  <node pkg="$(arg project)" type="$(arg project)_ndt" name="$(arg project)_ndt" respawn="true" output="screen">
+
+    <param name="outputPath" value="$(arg outputPath)" />
+
+    <param name="distance" value="$(arg distance_threshold)" />
+
+    <param name="converged_param_transform_probability" value="$(arg converged_param_transform_probability)" />
+  </node>
+
+</launch>
